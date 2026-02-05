@@ -14,7 +14,7 @@ addLayer("g", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent(){
-        exp=0.25
+        exp=0.5
         if(hasUpgrade("q",44)) exp+=0.1
         return exp
     }, // Prestige currency exponent
@@ -114,11 +114,11 @@ addLayer("g", {
             },
             canAfford(){return player.g.points.gte(5)&&player.points.gt("1e-39")},
             pay(){return player.g.points=player.g.points.minus(5)},
-            effect(){return player.g.points.add(1).ln().pow(hasUpgrade("g",16)?1.6:1.44).times(hasMilestone("q",2)?tmp.q.quarkboost[3]:1).add(1)},
+            effect(){return player.g.points.add(1).ln().pow(hasUpgrade("g",16)?2:1.6).times(hasMilestone("q",2)?tmp.q.quarkboost[3]:1).add(1)},
             effectDisplay(){return `Currently:x${format(upgradeEffect("g",12))}`},
             tooltip(){
-                if(hasUpgrade("g",21)) return `ln(g+1)<b style="color:#00EF00">^1.6+1`
-                return `ln(g+1)^1.44+1`
+                if(hasUpgrade("g",21)) return `ln(g+1)<b style="color:#00EF00">^2+1`
+                return `ln(g+1)^1.6+1`
             }
         },
         13:{
