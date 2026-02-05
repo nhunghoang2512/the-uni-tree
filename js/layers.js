@@ -124,31 +124,31 @@ addLayer("g", {
         13:{
             title:"Pulling",
             description(){return `Boost force gain based on itself.`},
-            cost(){return new Decimal(15)},
+            cost(){return new Decimal(30)},
             unlocked(){ 
                 return hasUpgrade("g",12)
             },
             canAfford(){return player.g.points.gte(15)&&player.points.gt("1e-39")},
             pay(){return player.g.points=player.g.points.minus(15)},
-            effect(){return player.points.times(1e40).pow(0.025).add(1)},
+            effect(){return player.points.times(1e41).pow(0.05).add(1)},
             effectDisplay(){return `Currently:x${format(upgradeEffect("g",13))}`},
             tooltip(){
-                if(hasUpgrade("g",22)) return `(f*1e40)<b style="color:#00EF00">^0.04</b>+1`
-                return `(f*1e40)^0.025+1`
+                if(hasUpgrade("g",22)) return `(f*1e41)<b style="color:#00EF00">^0.08</b>+1`
+                return `(f*1e41)^0.05+1`
             }
         },
         14:{
             title:"Genesis power",
             description(){return `Boost genesis gain based on force.`},
-            cost(){return new Decimal(30)},
+            cost(){return new Decimal(100)},
             unlocked(){ 
                 return hasUpgrade("g",13)
             },
             canAfford(){return player.g.points.gte(30)&&player.points.gt("1e-39")},
             pay(){return player.g.points=player.g.points.minus(30)},
-            effect(){return player.points.times(1e37).add(1).log10().pow(2).add(1)},
+            effect(){return player.points.times(1e40).add(1).log8().pow(2.5).add(1)},
             effectDisplay(){return `Currently:x${format(upgradeEffect("g",14))}`},
-            tooltip(){return `log10(f*1e37+1)^2+1`}
+            tooltip(){return `log8(f*1e40+1)^2.5+1`}
         },
         15:{
             title:"Gravity",
