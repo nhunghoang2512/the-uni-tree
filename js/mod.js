@@ -60,8 +60,8 @@ function getPointGen() {
     if(gain.gte(1)) gain=gain.pow(buyableEffect("a",11))
     
     let softcap=new Decimal(1)
-    let softpower=new Decimal(0.5)
-    let softcapdiv=new Decimal(10)
+    let softpower=new Decimal(0.005)
+    let softcapdiv=new Decimal(1)
     if(hasUpgrade("p",31)) softpower=softpower.times(0.98)
     if(inChallenge("n",12)) softpower=softpower.times(2)
     if(hasUpgrade("n",14)) softcapdiv=softcapdiv.div(0.9)
