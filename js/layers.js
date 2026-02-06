@@ -146,9 +146,9 @@ addLayer("g", {
             },
             canAfford(){return player.g.points.gte(30)&&player.points.gt("1e-39")},
             pay(){return player.g.points=player.g.points.minus(30)},
-            effect(){return player.points.times(1e40).add(1).log8().pow(2.5).add(1)},
+            effect(){return player.points.times(1e40).add(1).log10().pow(3).add(1)},
             effectDisplay(){return `Currently:x${format(upgradeEffect("g",14))}`},
-            tooltip(){return `log8(f*1e40+1)^2.5+1`}
+            tooltip(){return `log10(f*1e40+1)^3+1`}
         },
         15:{
             title:"Gravity",
