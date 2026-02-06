@@ -275,12 +275,12 @@ addLayer("g", {
     buyables:{
         11:{
             title:"Gravitational field",
-            cost(x) { return Decimal.pow(10,Decimal.pow(x,1.5)).div(hasUpgrade("g",24)?upgradeEffect("g",24):1).div(hasMilestone("q",1)?tmp.q.quarkboost[2]:1)},
+            cost(x) { return Decimal.pow(10,x).div(hasUpgrade("g",24)?upgradeEffect("g",24):1).div(hasMilestone("q",1)?tmp.q.quarkboost[2]:1)},
             effect(x) { 
                 base=new Decimal(3)
                 if(hasUpgrade("p",24)) base=base.add(2)
                 if(hasUpgrade("n",33)) base=base.add(1)
-                return Decimal.pow(base,x.add(buyableEffect("g",22)))
+                return Decimal.pow(base,Decimal.pow(x.add(buyableEffect("g",22)),1.5))
             },
             display() { return ((hasUpgrade("q",23)||hasMilestone("a",0))?``:`Reset genesis,force,`+((hasUpgrade("q",14)||hasMilestone("a",0))?``:` and first 9 genesis upgrades`))+` to boost genesis and force gain.
                                 Next at: ${format(this.cost())} genesis
